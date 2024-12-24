@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function processNumbers() {
+            let input = prompt("Nhập các số, cách nhau bằng dấu phẩy (,):");
+            let numbers = input.split(",").map(Number);
+
+            if (numbers.some(isNaN)) {
+                alert("Vui lòng nhập đúng định dạng số!");
+                return;
+            }
+
+            let max = Math.max(...numbers);
+            let min = Math.min(...numbers);
+            let evenCount = numbers.filter(num => num % 2 === 0).length;
+
+            alert(`Số lớn nhất: ${max}\nSố nhỏ nhất: ${min}\nSố chẵn: ${evenCount}`);
+        }processNumbers();
+    </script>
+</body>
+</html>

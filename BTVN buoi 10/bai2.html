@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function checkMonth() {
+            let month = prompt("Nhập tháng người anh em êyyy (tiếng anh): ").toLowerCase();
+            let days;
+
+            switch (month) {
+                case "january":
+                case "march":
+                case "may":
+                case "july":
+                case "august":
+                case "october":
+                case "december":
+                    days = 31;
+                    break;
+                case "april":
+                case "june":
+                case "september":
+                case "november":
+                    days = 30;
+                    break;
+                case "february":
+                    days = 28; 
+                    break;
+                default:
+                    alert("Người anh em nhập cái đ** gì đấy!");
+                    return;
+            }
+
+            alert(month.charAt(0).toUpperCase() + month.slice(1) + " có " + days + " ngày người anh em nhé.");
+        }
+        checkMonth();
+    </script>
+</body>
+</html>

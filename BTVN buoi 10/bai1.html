@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function checkDay() {
+            let day = prompt("Hôm nay là ngày gì anh em nhề (viết tiếng anh :3)?").toLowerCase();
+            if (day === "saturday" || day === "sunday") {
+                alert(day.charAt(0).toUpperCase() + day.slice(1) + " ngày nghỉ anh em êyyyyyy.");
+            } else {
+                alert(day.charAt(0).toUpperCase() + day.slice(1) + " ngày đi làm anh em êyyyyy");
+            }
+        }checkDay();
+    </script>
+</body>
+</html>
