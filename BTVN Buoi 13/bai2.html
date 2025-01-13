@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đạt ve ri hen săm </title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #EAECEE;
+            margin: 0;
+        }
+
+        .task-wrapper {
+            background-color: #FFFFFF;
+            padding: 24px;
+            border-radius: 8px;
+            width: 500px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            text-align: center;
+        }
+
+        input.task-input {
+            width: 400px;
+            height: 30px;
+            border: 1px solid #B2BEC3;
+            border-radius: 5px;
+            padding: 6px;
+            font-size: 14px;
+        }
+
+        button.task-add-btn {
+            width: 50px;
+            height: 40px;
+            background-color: #0984E3;
+            border: none;
+            color: #FFF;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .task-output {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #DADFE1;
+            border-radius: 6px;
+            background-color: #F7F9F9;
+            font-size: 16px;
+        }
+
+        button.delete-btn {
+            background-color: #D63031;
+            border: none;
+            color: #FFF;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="task-wrapper">
+        <h2>Task Manager v2.0</h2>
+        <input type="text" placeholder="Enter new task here" class="task-input">
+        <button class="task-add-btn">Add</button>
+        <div class="task-output"></div>
+    </div>
+
+    <script>
+        const input = document.querySelector('.task-input');
+        const addButton = document.querySelector('.task-add-btn');
+        const output = document.querySelector('.task-output');
+
+        // Function to add a task
+        addButton.addEventListener('click', () => {
+            const taskText = input.value.trim();
+
+            // If input is empty, do nothing
+            if (taskText === '') {
+                return;
+            }
+
+            // Clear input
+            input.value = '';
+
+            // Create task item
+            const taskItem = document.createElement('div');
+            taskItem.textContent = taskText;
+            taskItem.className = 'task-item';
+
+            // Create delete button
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.className = 'delete-btn';
+
+            // Append delete button to task item
+            taskItem.appendChild(deleteButton);
+
+            // Append task item to output
+            output.appendChild(taskItem);
+        });
+
+        // Function to delete a task
+        output.addEventListener('click', (event) => {
+            if (event.target.classList.contains('delete-btn')) {
+                const taskItem = event.target.parentElement;
+                output.removeChild(taskItem);
+            }
+        });
+
+        // Trigger add button on Enter keypress
+        document.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                addButton.click();
+            }
+        });
+    </script>
+</body>
+
+</html>

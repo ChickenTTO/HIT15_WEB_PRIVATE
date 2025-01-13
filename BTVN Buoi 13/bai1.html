@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đạt đẹp trai</title>
+    <style>
+        body {
+            background-color: #1F1F3B;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 460px;
+            background-color: #2D2D65;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .title {
+            color: #F9CA24;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            width: 380px;
+            height: 38px;
+            background-color: #1B2430;
+            border: 2px solid #3867D6;
+            border-radius: 8px;
+            color: white;
+            padding-left: 10px;
+        }
+
+        .btn-check {
+            margin-top: 10px;
+            width: 70px;
+            height: 36px;
+            background-color: #26DE81;
+            color: white;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .output-section {
+            margin-top: 20px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .result-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .char-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 36px;
+            height: 36px;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .char-correct {
+            background-color: #0FE97B;
+            color: #000;
+        }
+
+        .char-wrong {
+            background-color: #E84118;
+            color: #FFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Palindrome Checker v2.0</h1>
+        <input type="text" placeholder="Type something..." class="input-box">
+        <p class="output-section"></p>
+        <button class="btn-check">Check</button>
+        <div class="result-container"></div>
+    </div>
+    <script>
+        const checkButton = document.querySelector('.btn-check');
+        const inputBox = document.querySelector('.input-box');
+        const outputSection = document.querySelector('.output-section');
+        const resultContainer = document.querySelector('.result-container');
+
+        checkButton.addEventListener('click', () => {
+            outputSection.innerHTML = '';
+            resultContainer.innerHTML = '';
+
+            const inputString = inputBox.value.trim();
+            if (inputString === '') {
+                outputSection.textContent = 'Please enter a valid string!';
+                return;
+            }
+
+            let isPalindrome = true;
+
+            for (let i = 0; i < inputString.length; i++) {
+                const charBox = document.createElement('span');
+                charBox.textContent = inputString[i];
+                charBox.className = 'char-box';
+
+                if (inputString[i] !== inputString[inputString.length - 1 - i]) {
+                    charBox.classList.add('char-wrong');
+                    isPalindrome = false;
+                } else {
+                    charBox.classList.add('char-correct');
+                }
+
+                resultContainer.appendChild(charBox);
+            }
+
+            if (isPalindrome) {
+                outputSection.textContent = 'This is a palindrome!';
+                outputSection.style.color = '#0FE97B';
+            } else {
+                outputSection.textContent = 'This is not a palindrome!';
+                outputSection.style.color = '#E84118';
+            }
+        });
+
+        document.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                checkButton.click();
+            }
+        });
+    </script>
+</body>
+
+</html>
